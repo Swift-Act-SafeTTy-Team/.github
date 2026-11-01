@@ -1,0 +1,107 @@
+name: "Cross-Team Integration Form"
+description: "Report a new delivery (tags per repository) so the receiving team can integrate the changes efficiently."
+title: "I: "
+labels: ["cross-team","Integration"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please complete all required fields to help the receiving team integrate the changes as efficiently as possible.
+
+  - type: markdown
+    attributes:
+      value: "# Tags per repo:"
+
+  - type: markdown
+    attributes:
+      value: "### VScode TAG:"
+  - type: input
+    id: VScode_tag
+    attributes:
+      label: "<h1>Tags per repo:</h1><ul><h2><li>VScode Tag</li></h2>"
+      description: "Tag of the VScode repository to integrate. Paste the tag name or its GitHub link."
+      placeholder: "e.g., VSCODE_1.0.0 or https://github.com/Swift-Act-SafeTTy-Team/<repo>/tree/<tag>"
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: "### project TAG:"
+  - type: input
+    id: project_tag
+    attributes:
+      label: "<h2><li>Project Tag</li></h2>"
+      description: "Tag of the project repository to integrate. Paste the tag name or its GitHub link."
+      placeholder: "e.g., PROJECT_1.0.0 or https://github.com/Swift-Act-SafeTTy-Team/<repo>/tree/<tag>"
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: "### config TAG:"
+  - type: input
+    id: config_tag
+    attributes:
+      label: "<h2><li>Config Tag</li></h2>"
+      description: "Tag of the configuration repository to integrate. Paste the tag name or its GitHub link."
+      placeholder: "e.g., CONFIG_1.0.0 or https://github.com/Swift-Act-SafeTTy-Team/<repo>/tree/<tag>"
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: "### RDS TAG:"
+  - type: input
+    id: RDS_tag
+    attributes:
+      label: "<h2><li>RDS Tag</li></h2>"
+      description: "Tag of the RDS repository to integrate. Paste the tag name or its GitHub link."
+      placeholder: "e.g., RDS_1.0.0 or https://github.com/Swift-Act-SafeTTy-Team/<repo>/tree/<tag>"
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: "### MCAL TAG:"
+  - type: textarea
+    id: MCAL_tag
+    attributes:
+      label: "<h2><li>MCAL Tag</li></h2>"
+      description: "MCAL tag for each target microcontroller, one per line. Write old tag wich is in the previous delivery for targets not affected by this delivery."
+      placeholder: |
+        e.g.,
+        STM32H755: TAG_1.0.0
+        STM32H723: TAG_1.0.0
+        AM234x: N/A
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: "# Description:"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "</ul><h1>Summary & Description:</h1><ul>"
+      description: "What is the purpose of this integration, what does it add or fix in the project, and what is the expected outcome?"
+      placeholder: "e.g., Fixed the SPI driver issue in the MCAL layer, which improves communication between the microcontroller and its peripheral devices."
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: "# Integration Actions:"
+
+  - type: textarea
+    id: integration_actions
+    attributes:
+      label: "</ul><h1>Integration Actions:</h1><ul>"
+      description: "List, step by step, the actions the receiving team must take to integrate these changes (updates, configuration changes, tests to run)."
+      placeholder: |
+        e.g.,
+        1. Update the MCAL layer to the tag above (fixed SPI driver).
+        2. Regenerate the project configuration.
+        3. Run the integration tests and attach the results.
+    validations:
+      required: true
